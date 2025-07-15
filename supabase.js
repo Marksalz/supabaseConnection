@@ -7,22 +7,35 @@ const supabase = createClient(
     process.env.PUBLIC_ANON_API_KEY
 );
 
+export async function readUserByName(name, password) {
+    const { data, error } = await supabase
+        .from('users')
+        .select()
+        .eq('username', name)
+        .eq('password', password);
+    if (error) throw new Error(error.message);
+    return data;
+}
+
+export async function readAll() {
+    const { data, error } = await supabase
+        .from('products')
+        .select();
+    if (error) throw new Error(error.message);
+    console.log(data);
+    return data;
+}
+
 async function create() {
     const { data, error } = await supabase
         .from('users')
-        .insert({ name: "Menachem" })
+        .insert({ username: "Adina", password: "12345" })
         .select();
     if (error) throw new Error(error.message);
     return data;
 }
 
-async function readAll() {
-    const { data, error } = await supabase
-        .from('users')
-        .select();
-    if (error) throw new Error(error.message);
-    return data;
-}
+
 
 async function readById(id) {
     const { data, error } = await supabase
@@ -54,15 +67,15 @@ async function deleteById(id) {
 }
 
 
-try {
-    //const data = await create();
-    const data1 = await readById(1);
-    const updatedData = await updateById(1);
-    await (deleteById(5));
-    const table = await readAll();
-    //console.table(data1);
-    console.table(table);
-    //console.table(updatedData);
-} catch (error) {
-    console.log(error.message);
-}
+// try {
+//     //const data = await create();
+//     //const data1 = await readById(1);
+//     //const updatedData = await updateById(1);
+//     //await (deleteById(5));
+//     const table = await readAll();
+//     //console.table(data1);
+//     console.table(table);
+//     //console.table(updatedData);
+// } catch (error) {
+//     console.log(error.message);
+// }

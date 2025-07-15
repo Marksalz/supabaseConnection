@@ -1,0 +1,26 @@
+{
+  "name": "supabaseserverconnection",
+  "version": "1.0.0",
+  "description": "",
+  "main": "supabase.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Marksalz/supabaseConnection.git"
+  },
+  "keywords": [],
+  "author": "",
+  "type": "module",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Marksalz/supabaseConnection/issues"
+  },
+  "homepage": "https://github.com/Marksalz/supabaseConnection#readme",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.51.0",
+    "dotenv": "^17.2.0",
+    "express": "^5.1.0"
+  }
+}
